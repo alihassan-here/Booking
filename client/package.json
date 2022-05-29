@@ -1,8 +1,7 @@
 {
   "name": "Bookme",
   "private": true,
-  "version": "0.0.0",
-  "proxy": "http://localhost:8800/api",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
