@@ -8,6 +8,7 @@ import 'react-date-range/dist/theme/default.css';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from '../../context/AuthContext';
 
 const Header = ({ type }) => {
     const [destination, setDestination] = useState("");
@@ -27,6 +28,7 @@ const Header = ({ type }) => {
     });
 
     const navigate = useNavigate();
+    const { user } = useContext(AuthContext)
 
     const handleOption = (name, operation) => {
         setOptions(prev => {
@@ -90,7 +92,9 @@ const Header = ({ type }) => {
                             Book the perfect getaway for your next adventure.   We'll help you find the perfect place to stay,
                             discover the perfect getaway, or book the perfect car rental.
                         </p>
-                        <button className="headerBtn">Sign in / Register</button>
+                        {
+                            !user && <button className="headerBtn">Sign in / Register</button>
+                        }
                         <div className="headerSearch">
                             <div className="headerSearchItem">
                                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
